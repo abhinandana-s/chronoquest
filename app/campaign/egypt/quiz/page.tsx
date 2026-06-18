@@ -6,26 +6,15 @@ import { egyptQuestions } from "@/lib/questions";
 import { saveXP, getXP } from "@/lib/storage";
 
 export default function QuizBattle() {
-  return (
-    <div>
-      <Navbar />
-      <h1>Quiz Page</h1>
-    </div>
-  );
-}
-import Navbar from "@/components/Navbar";"use client";
-<Navbar />
-import { useState, useEffect } from "react";
-import { egyptQuestions } from "@/lib/questions";
-import { saveXP, getXP } from "@/lib/storage";
-export default function QuizBattle() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [xp, setXp] = useState(0);
   const [hp, setHp] = useState(100);
   const [completed, setCompleted] = useState(false);
+
   useEffect(() => {
-  setXp(getXP());
-}, []);
+    setXp(getXP());
+  }, []);
+
   const question = egyptQuestions[currentQuestion];
 
   const handleAnswer = (selected: string) => {
@@ -61,6 +50,7 @@ export default function QuizBattle() {
 
   return (
     <main className="min-h-screen bg-black text-white p-10">
+      <Navbar />
 
       <h1 className="text-5xl font-bold mb-4">
         ⚔️ Quiz Battle
@@ -79,7 +69,6 @@ export default function QuizBattle() {
       </p>
 
       <div className="bg-slate-800 p-8 rounded-xl max-w-3xl">
-
         <h2 className="text-2xl font-bold mb-6">
           {question.question}
         </h2>
@@ -95,9 +84,7 @@ export default function QuizBattle() {
             </button>
           ))}
         </div>
-
       </div>
-
     </main>
   );
 }
