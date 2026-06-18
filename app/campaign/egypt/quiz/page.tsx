@@ -1,4 +1,18 @@
+"use client";
 
+import Navbar from "@/components/Navbar";
+import { useState, useEffect } from "react";
+import { egyptQuestions } from "@/lib/questions";
+import { saveXP, getXP } from "@/lib/storage";
+
+export default function QuizBattle() {
+  return (
+    <div>
+      <Navbar />
+      <h1>Quiz Page</h1>
+    </div>
+  );
+}
 import Navbar from "@/components/Navbar";"use client";
 <Navbar />
 import { useState, useEffect } from "react";
