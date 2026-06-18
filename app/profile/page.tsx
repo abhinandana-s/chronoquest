@@ -1,5 +1,18 @@
-import Link from "next/link";
+"use client";
+<Navbar />
+import Navbar from "@/components/Navbar";
+import { useEffect, useState } from "react";
+import { getXP } from "@/lib/storage";
+
 export default function Profile() {
+  const [xp, setXp] = useState(0);
+
+  useEffect(() => {
+    setXp(getXP());
+  }, []);
+
+  const level = Math.floor(xp / 100) + 1;
+
   return (
     <main className="min-h-screen bg-black text-white p-10">
 
@@ -15,31 +28,11 @@ export default function Profile() {
 
         <div className="mt-6 space-y-3">
 
-          <p>⭐ Level: 1</p>
+          <p>⭐ Level: {level}</p>
 
-          <p>⚔ Battles Won: 1</p>
-
-          <p>🏛 Campaigns Completed: 1</p>
-
-          <p>🔥 Daily Streak: 0 Days</p>
-
-          <p>🏆 Total XP: 40</p>
+          <p>🏆 XP: {xp}</p>
 
         </div>
-
-      </div>
-
-      <div className="bg-slate-800 p-8 rounded-xl max-w-3xl mt-8">
-
-        <h2 className="text-2xl font-bold mb-4">
-          Achievements
-        </h2>
-
-        <ul className="space-y-2">
-          <li>🏛 Egypt Explorer</li>
-          <li>⚔ First Victory</li>
-          <li>📚 History Beginner</li>
-        </ul>
 
       </div>
 
